@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateDrivenFormComponent implements OnInit {
 
-  model: any = {};
+  model = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  };
 
   onSubmit() {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))

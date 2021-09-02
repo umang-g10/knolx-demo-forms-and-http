@@ -1,0 +1,21 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2>Posts</h2>
+                <button class="btn btn-primary " (click)="getPosts()">Get Posts</button> <span class="ml-3"
+                    *ngIf="fetchingPosts">Fetching...</span>
+                <div class="posts-container">
+                    <ng-container *ngFor="let post of posts">
+                        <div class="card my-2" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{post.title}}</h5>
+                                <p class="card-text">{{post.body}}</p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

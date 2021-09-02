@@ -27,6 +27,6 @@ export class ReactiveFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.profileForm)
+    alert(JSON.stringify(this.profileForm.value))
   }
-
 }

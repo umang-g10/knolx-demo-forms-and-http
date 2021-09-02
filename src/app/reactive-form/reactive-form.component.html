@@ -2,13 +2,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <h3>Angular 6 Template-Driven Form Validation</h3>
+                <h3>Reactive Form</h3>
                 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label for="firstName">First Name</label>
                         <input type="text" class="form-control" id="first-name" type="text"
                             formControlName="firstName" />
-                        {{profileForm.get('firstName').errors | json}}
                         <div *ngIf="profileForm.get('firstName').errors && profileForm.get('firstName').touched"
                             class="invalid-feedback">
                             <div *ngIf="profileForm.get('firstName').errors.required">First Name is required</div>
@@ -35,7 +34,7 @@
                             <input type="text" class="form-control" id="zip" type="text" formControlName="zip" />
                             <div *ngIf="profileForm.get('address')['controls']['zip'].errors  && profileForm.get('address')['controls']['zip'].touched"
                                 class="invalid-feedback">
-                                <div *ngIf="profileForm.get('address')['controls']['zip'].errors.minlength">Pincode
+                          0      <div *ngIf="profileForm.get('address')['controls']['zip'].errors.minlength">Pincode
                                     should have atleast 6 digit</div>
                                 <div *ngIf="profileForm.get('address')['controls']['zip'].errors.pattern">Pincode should
                                     only have number</div>
