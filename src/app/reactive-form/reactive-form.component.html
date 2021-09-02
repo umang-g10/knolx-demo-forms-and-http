@@ -1,0 +1,59 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h3>Angular 6 Template-Driven Form Validation</h3>
+                <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="first-name" type="text"
+                            formControlName="firstName" />
+                        {{profileForm.get('firstName').errors | json}}
+                        <div *ngIf="profileForm.get('firstName').errors && profileForm.get('firstName').touched"
+                            class="invalid-feedback">
+                            <div *ngIf="profileForm.get('firstName').errors.required">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" type="text" formControlName="email" />
+                        <div *ngIf="profileForm.get('email').errors && profileForm.get('email').touched"
+                            class="invalid-feedback">
+                            <div *ngIf="profileForm.get('email').errors.required">Email is required</div>
+                            <div *ngIf="profileForm.get('email').errors.email">Email is required</div>
+                        </div>
+                    </div>
+
+                    <div formGroupName="address">
+                        <h2>Address</h2>
+                        <div class="form-group">
+                            <label for="street">Street</label>
+                            <input type="text" class="form-control" id="street" type="text" formControlName="street" />
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">Zip</label>
+                            <input type="text" class="form-control" id="zip" type="text" formControlName="zip" />
+                            <div *ngIf="profileForm.get('address')['controls']['zip'].errors  && profileForm.get('address')['controls']['zip'].touched"
+                                class="invalid-feedback">
+                                <div *ngIf="profileForm.get('address')['controls']['zip'].errors.minlength">Pincode
+                                    should have atleast 6 digit</div>
+                                <div *ngIf="profileForm.get('address')['controls']['zip'].errors.pattern">Pincode should
+                                    only have number</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>Complete the form to enable button.</p>
+                    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+                </form>
+
+                <hr>
+
+                <p>Form Value: {{ profileForm.value | json }}</p>
+
+                <p>Form Status: {{ profileForm.status }}</p>
+
+            </div>
+        </div>
+    </div>
+</div>

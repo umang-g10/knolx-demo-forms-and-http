@@ -1,0 +1,9 @@
+.form-group {
+    .ng-touched.ng-invalid { 
+        border-color: #dc3545;
+    }
+}
+
+.invalid-feedback {
+    display: block !important;
+}

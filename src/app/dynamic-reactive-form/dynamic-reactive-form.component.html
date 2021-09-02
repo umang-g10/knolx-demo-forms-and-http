@@ -1,0 +1,33 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form [formGroup]="hobbiesForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="first-name" type="text"
+                            formControlName="firstName" />
+                    </div>
+                    <div formArrayName="hobbies">
+                        <h2>Hobby</h2>
+                        <button (click)="addHobby()">+ Add another hobby</button>
+
+                        <div *ngFor="let hobby of hobbies.controls; let i=index">
+                            <div class="form-group">
+                                <label for="hobby-{{ i }}">Hobby:</label>
+                                <input id="hobby-{{ i }}" class="form-control" type="text" [formControlName]="i">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" [disabled]="!hobbiesForm.valid">Submit</button><br />
+
+                    {{hobbiesForm.value | json}}
+                </form>
+
+                <hr>
+
+            </div>
+        </div>
+    </div>
+</div>
